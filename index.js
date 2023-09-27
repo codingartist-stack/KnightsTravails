@@ -10,6 +10,7 @@ const Chess = (boardSize = 8) => {
   };
 
   createBoard(boardSize);
+
   const createEdges = (board = chessBoard) => {
     for (const [position] of board) {
       const positionArray = position.split(',');
@@ -36,6 +37,12 @@ const Chess = (boardSize = 8) => {
   };
 
   createEdges();
+
+  const knightMoves = (start, end) => {
+    const paths = [];
+    const visited = new Set();
+    const quene = [];
+  };
   console.log(chessBoard);
 
   return {};
