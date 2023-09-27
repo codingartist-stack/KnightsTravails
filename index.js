@@ -53,7 +53,7 @@ const Chess = (boardSize = 8) => {
         console.log(
           `You made it in ${path[0].length} moves! Here's your path: `
         );
-        console.log(path);
+        console.log(path[0]);
         return;
       }
 
