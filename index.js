@@ -39,13 +39,44 @@ const Chess = (boardSize = 8) => {
   createEdges();
 
   const knightMoves = (start, end) => {
-    const paths = [];
+    const path = [];
     const visited = new Set();
-    const quene = [];
-  };
-  console.log(chessBoard);
+    const queue = [];
 
-  return {};
+    queue.push([start, [start]]);
+
+    while (queue.length > 0) {
+      let [current, move] = queue.shift();
+      visited.add(current);
+      if (current === end) {
+        path.push(move);
+        console.log(
+          `You made it in ${path[0].length} moves! Here's your path: `
+        );
+        console.log(path);
+        return;
+      }
+
+      const neighbors = chessBoard.get(current);
+      for (const position of neighbors) {
+        if (!visited.has(position)) {
+          queue.push([position, [...move, position]]);
+        }
+      }
+    }
+  };
+
+  //   console.log(chessBoard);
+
+  return {
+    chessBoard,
+    knightMoves,
+  };
 };
 
-Chess();
+const game = Chess();
+
+// game.knightMoves('0,0', '1,2');
+// game.knightMoves('0,0', '3,3');
+// game.knightMoves('3,3', '0,0');
+game.knightMoves('3,3', '4,3');
