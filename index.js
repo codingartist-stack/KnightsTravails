@@ -1,10 +1,10 @@
 const Chess = (boardSize = 8) => {
-  const chessBoard = new Map();
+  const chessBoard = {};
 
   const createBoard = (boardSize) => {
     for (let i = 0; i < boardSize; i++) {
       for (let j = 0; j < boardSize; j++) {
-        chessBoard.set(`${[i, j]}`, []);
+        chessBoard[`${i},${j}`] = [];
       }
     }
   };
@@ -12,7 +12,7 @@ const Chess = (boardSize = 8) => {
   createBoard(boardSize);
 
   const createEdges = (board = chessBoard) => {
-    for (const [position] of board) {
+    for (const position in board) {
       const positionArray = position.split(',');
       const x = parseInt(positionArray[0]);
       const y = parseInt(positionArray[1]);
@@ -37,6 +37,7 @@ const Chess = (boardSize = 8) => {
   };
 
   createEdges();
+  console.log(chessBoard);
 
   const knightMoves = (start, end) => {
     const path = [];
@@ -77,4 +78,4 @@ const game = Chess();
 // game.knightMoves('0,0', '1,2');
 // game.knightMoves('0,0', '3,3');
 // game.knightMoves('3,3', '0,0');
-game.knightMoves('3,3', '4,3');
+// game.knightMoves('3,3', '4,3');
