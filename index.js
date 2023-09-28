@@ -66,8 +66,6 @@ const Chess = (boardSize = 8) => {
     }
   };
 
-  //   console.log(chessBoard);
-
   return {
     chessBoard,
     knightMoves,
