@@ -29,15 +29,14 @@ const Chess = (boardSize = 8) => {
       };
       for (const pattern in movePattern) {
         const move = movePattern[pattern].toString();
-        if (board.has(move) && !board.get(position).includes(move)) {
-          chessBoard.get(position).push(move);
+        if (board.hasOwnProperty(move) && !board[position].includes(move)) {
+          chessBoard[position].push(move);
         }
       }
     }
   };
 
   createEdges();
-  console.log(chessBoard);
 
   const knightMoves = (start, end) => {
     const path = [];
@@ -58,7 +57,7 @@ const Chess = (boardSize = 8) => {
         return;
       }
 
-      const neighbors = chessBoard.get(current);
+      const neighbors = chessBoard[current];
       for (const position of neighbors) {
         if (!visited.has(position)) {
           queue.push([position, [...move, position]]);
@@ -78,4 +77,4 @@ const game = Chess();
 // game.knightMoves('0,0', '1,2');
 // game.knightMoves('0,0', '3,3');
 // game.knightMoves('3,3', '0,0');
-// game.knightMoves('3,3', '4,3');
+game.knightMoves('3,3', '4,3');
